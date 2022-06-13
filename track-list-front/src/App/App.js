@@ -1,15 +1,17 @@
 import {AppRoot, PanelHeader} from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
-import {ALL_TRACKS} from "./Model/Track";
-import {useStorage} from "./Model/useStorage";
+import {ALL_TRACKS} from "../Model/Track";
+import {useStorage} from "../Model/useStorage";
 
-import {SideList} from "./SideList/SideList";
-import {TrackMap} from "./Map/TrackMap";
+import {SideList} from "../SideList/SideList";
+import {TrackMap} from "../Map/TrackMap";
 
 export const App = () => {
     const [tracks, setTracks] = useStorage("tracks", ALL_TRACKS)
 
     const [excludedTrackIds, setExcludedTrackIds] = useStorage("excluded",[]);
+
+// fetch("")
 
     return (
         <AppRoot>
