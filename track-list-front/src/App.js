@@ -1,85 +1,31 @@
-import {useState} from "react";
-import {
-  AppRoot,
-  SplitLayout,
-  SplitCol,
-  Panel,
-  PanelHeader,
-  Group,Cell,
-} from "@vkontakte/vkui";
+import {AppRoot, PanelHeader} from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
-import {Map, YMaps} from "react-yandex-maps";
+import {ALL_TRACKS} from "./Model/Track";
+import {useStorage} from "./Model/useStorage";
 
-
-class Track {
-  constructor(id) {
-    this.id = id
-    this.name = "Test Track";
-    this.timestamp = 1654856186
-    this.distance = 65320
-
-  }
-
-}
-
+import {SideList} from "./SideList/SideList";
+import {TrackMap} from "./Map/TrackMap";
 
 export const App = () => {
-  const [tracks, setTracks] = useState([
-    new Track("99955f2f-8e31-46fa-b61d-7f0bf7ce6624"),
-    new Track("99955f2f-8e31-46fa-b61d-7f0bf7ce6625"),
-    new Track("99955f2f-8e31-46fa-b61d-7f0bf7ce6626")
-  ])
-  // let tracks = [ new Track("tttt")]
+    const [tracks, setTracks] = useStorage("tracks", ALL_TRACKS)
 
-  const [selectedTracks, setSelectedTracks] = useState([]);
+    const [excludedTrackIds, setExcludedTrackIds] = useStorage("excluded",[]);
 
-  return (
-      <AppRoot>
-        <YMaps>
-          <Map  style = {
-            {
-              position: "fixed",
-              top: 0,
-              bottom:0,
-              left: 0,
-              right: 0
-            }
-          } defaultState={{ center: [55.75, 37.57], zoom: 9 }} />
-        </YMaps>
-        <PanelHeader>Panel 1</PanelHeader>
-        <SplitLayout>
-          <SplitCol fixed spaced width={280} maxWidth={280}>
-            <Panel>
-              <Group>
-                {
-                  tracks.map((i) => {
+    return (
+        <AppRoot>
+            <PanelHeader>Tracks</PanelHeader>
+            <TrackMap
+                tracks={tracks}
+                excludedTrackIds={excludedTrackIds}
+            />
+            <SideList
+                tracks={tracks}
+                excludedTrackIds={excludedTrackIds}
+                setExcludedTrackIds={setExcludedTrackIds}
+            />
 
-                    return (
-                        <Cell
-                            key={i.id}
-                            onClick={() => {
-                              // if (selectedTracks.contains(i.id)) {
-                              //   let newTracks = selectedTracks.filter(id => id !== i.id)
-                              //   setSelectedTracks(newTracks)
-                              // } else {
-                              //   let newTracks = selectedTracks + [i.id]
-                              //   setSelectedTracks(newTracks)
-                              // }
-                            }
-                            }
-                        >
-                          {i.name}
-                        </Cell>
-                    )
-                  })
-                }
-              </Group>
-            </Panel>
-          </SplitCol>
-
-        </SplitLayout>
-      </AppRoot>
-  );
+        </AppRoot>
+    );
 };
 
 
