@@ -5,15 +5,16 @@ import {ALL_TRACKS, Track} from "../Model/Track";
 import {SideList} from "../SideList/SideList";
 import {TrackMap} from "../Map/TrackMap";
 import {useEffect, useState} from "react";
+import {useStorage} from "../Model/useStorage";
 
-const API_ENDPOINT = "http://localhost:5000"
+const API_ENDPOINT = "https://api.tracks.kidev.ru"
 
 export const App = () => {
     const [tracks, setTracks] = useState([]) //useStorage("tracks", [])
     const [isMounted, setIsMounted] = useState(false)
 
 
-    const [excludedTrackIds, setExcludedTrackIds] = useState([]) //useStorage("excluded",[]);
+    const [excludedTrackIds, setExcludedTrackIds] = useStorage("excluded",[]);
 
     useEffect(async () => {
         setIsMounted(true)

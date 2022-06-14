@@ -1,0 +1,37 @@
+version: '3'
+services:
+  main:
+    image: docker.kidev.ru/tracks/front:latest
+    build:
+      context: ./track-list-front
+    restart: always 
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tracks.tls.certresolver=default"
+      - "traefik.http.services.tracks.loadbalancer.server.port=80"
+      
+    networks:
+      - nginx_common
+  api:
+    image: docker.kidev.ru/tracks/api:latest
+    build:
+      context: ./react-track-backend
+    restart: always 
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tracks-api.tls.certresolver=default"
+      - "traefik.http.services.tracks-api.loadbalancer.server.port=5000"
+
+    volumes:
+      - "tracks-uploads:/app/tracks:rw"
+    
+    networks:
+          - nginx_common
+networks:
+  nginx_common:
+    external: true
+volumes:
+  tracks-uploads:
+      external: true

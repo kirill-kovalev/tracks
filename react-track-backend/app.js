@@ -18,7 +18,7 @@ app.use('/', indexRouter);
 
 const botRouteBinder = require('./routes/bot');
 const TelegramBot = require('node-telegram-bot-api');
-const token = '5542549275:AAGjzqv7WVl4O2cqFIv5db1v4D7EiGLa7s0';
+const token = process.env["BOT_TOKEN"];
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});

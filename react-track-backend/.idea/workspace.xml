@@ -2,48 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29c9df99-323e-4a97-8f21-1f2af0bd4cd4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/bot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp/7e02a528-1285-42d4-b1b6-96a1f83813f2.gpx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/02abce5c-8ec5-4953-b71f-c2b4f808eda8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/0d5723a9-5c8a-4ff7-a15f-e5c9b6cb6f81" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/1059f7ca-d358-4259-bf9d-c61f71734bbc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/1535a4a9-a8d5-4c1c-96db-c83c083e6efe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/31f70dc5-e9b6-4c85-a7ca-3733f20fc7cd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/3a6958b3-35d3-48d0-aeec-5ce274098637" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/3c1c7ad5-0ffa-4e8b-bc9b-092e74601e14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/41160916-0d70-44c6-825f-93fc2a6b38bb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/6677925d-85d7-467e-ae8c-a4a00698d1d6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/7297f222-7e1d-454d-8f8d-544df8609637" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/9297669d-aa4e-4156-8e45-d119dff7c2c0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/93a67dfe-8712-4fc2-a31d-5e0c492c795e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/aee69ac3-f5cd-42b2-89fd-61a6fba222f3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/b1cd4709-2e69-44e7-a007-9b36ab77e639" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/bb9f6449-a6c7-4b49-9c97-bc9de74fca8f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/c31ea85f-70b8-4574-93c8-748d33d70ba1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/c92d6aa3-ca3a-441f-90fe-93ec7cc53fd9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/cf61b6dd-c375-45d2-b195-eaa1b5c5b640" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/d0642089-c700-4a47-b7b3-07d47d2a14ef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/d2d82086-d624-409c-9bc4-9a36b5246046" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/e82db560-dc25-4210-b884-63ec2dfbb700" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/e8d51c1e-2d5a-4542-99ca-d506b53be9e7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/eb85a9f7-8466-4ebf-9b36-d8d7a3240dcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/ebffcba8-7bc8-4942-b3cd-9911f8b88c66" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/eec5be9e-a3d8-4d46-b042-f20fcae2ac6a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tracks/fbdf2510-e2d1-4907-81ac-c4c31b5f3c65" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../track-list-front/src/SideList/TrackCell.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../track-list-front/src/SideList/TrackCell.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../track-list-front/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/bot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../track-list-front/src/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../track-list-front/src/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../track-list-front/src/Model/Track.js" beforeDir="false" afterPath="$PROJECT_DIR$/../track-list-front/src/Model/Track.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../track-list-front/src/Model/useStorage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../track-list-front/src/Model/useStorage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../track-list-front/src/SideList/SideList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../track-list-front/src/SideList/SideList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../track-list-front/src/TrackCell.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../track-list-front/src/data/3B21F7AB-D106-498C-B520-3BA035FF5FA1.json" beforeDir="false" afterPath="$PROJECT_DIR$/tracks/c0487ca9-58cf-4aa1-bc2b-c7f20f9ab77b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../track-list-front/src/data/3C9987A3-DB3B-4C53-A958-8DBC0FDD7748.json" beforeDir="false" afterPath="$PROJECT_DIR$/tracks/eb95a4ce-2e54-4de9-84bf-d0a04c26a716" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../track-list-front/src/data/4A0C3BD1-4D29-40F4-AF5A-0D057B0B767F.json" beforeDir="false" afterPath="$PROJECT_DIR$/tracks/b4ef69f9-d87a-4c91-a70d-6bab53d22b02" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1655138051521</updated>
       <workItem from="1655138053222" duration="4018000" />
-      <workItem from="1655224961647" duration="5272000" />
+      <workItem from="1655224961647" duration="9133000" />
     </task>
     <servers />
   </component>

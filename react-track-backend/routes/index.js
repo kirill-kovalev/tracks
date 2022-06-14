@@ -5,7 +5,7 @@ const path = require('path');
 
 /* GET home page. */
 router.get("/", (req, res) => {
-  let files = fs.readdirSync("./tracks")
+  let files = fs.readdirSync("./tracks").filter( f => !f.includes("DS_Store"))
 
   res.send(files)
 })
