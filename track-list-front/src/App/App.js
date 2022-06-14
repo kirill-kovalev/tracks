@@ -37,7 +37,7 @@ function _fetch(url) {
 }
 
 export const App = () => {
-    const [tracks, setTracks] = useState([])//useStorage("tracks", [])
+    var [tracks, setTracks] = useState([])//useStorage("tracks", [])
 
     const [excludedTrackIds, setExcludedTrackIds] = useState([]) //useStorage("excluded",[]);
 
@@ -60,7 +60,8 @@ export const App = () => {
                         .then(fl => {
                             console.log("added track " + fl[0].name)
                             console.log("total tracks " + tracks.length)
-                            setTracks(tracks.concat(fl))
+                            tracks = tracks.concat(fl)
+                            setTracks(tracks)
                         })
                 })
             })
