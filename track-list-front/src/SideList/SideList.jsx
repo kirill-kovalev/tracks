@@ -1,19 +1,19 @@
 import {Cell, Group, Panel, SplitCol} from "@vkontakte/vkui";
 import {trackColor} from "../Model/trackColor";
 import {Icon24CheckCircleOff, Icon24CheckCircleOn} from "@vkontakte/icons";
-
+import {TrackCell} from "./TrackCell";
+import './TrackCell.css';
 
 export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
 
     return (
-        <SplitCol fixed spaced width={280} maxWidth={280}>
+        <SplitCol spaced width={400} >
             <Panel>
                 <Group>
                     {
                         tracks.map((i) => {
-                            let accentColor = trackColor(tracks, i)
                             return (
-                                <Cell
+                                <TrackCell
                                     key={i.id}
                                     onClick={() => {
                                         if (excludedTrackIds.includes(i.id)) {
@@ -25,16 +25,10 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
                                             setExcludedTrackIds(newTracks)
                                         }
                                     }}
-                                >
-
-                                    { excludedTrackIds.includes(i.id) ?
-                                        <Icon24CheckCircleOff fill={ accentColor }/> :
-                                        <Icon24CheckCircleOn fill={ accentColor } />
-                                    }
-
-                                    {i.name} <br/>
-                                    { (i.length / 1000).toFixed(2) } km
-                                </Cell>
+                                    isExcluded={!excludedTrackIds.includes(i.id)}
+                                    track={i}
+                                    accentColor={ trackColor(tracks, i) }
+                                />
                             )
                         })
                     }

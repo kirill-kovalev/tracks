@@ -7,61 +7,31 @@ import {SideList} from "../SideList/SideList";
 import {TrackMap} from "../Map/TrackMap";
 import {useEffect, useState} from "react";
 
-
-function _fetch(url) {
-    return new Promise( (resolve, reject) => {
-        let data = JSON.stringify([
-            {
-                name: "1",
-                url: "https://github.com/kirill-kovalev/tracks-raw/raw/main/2281D11A-157B-4BF6-98D9-A89235834F74.json"
-            },
-            {
-                name: "2",
-                url: "https://github.com/kirill-kovalev/tracks-raw/raw/main/06050111-732C-49FD-B37E-BF62BEBC1E6C.json"
-            },
-            {
-                name: "3",
-                url: "https://github.com/kirill-kovalev/tracks-raw/raw/main/29_05_.json"
-            },
-            {
-                name: "4",
-                url: "https://github.com/kirill-kovalev/tracks-raw/raw/main/30FB1C01-65C1-4D2E-9797-628514D0F5D4.json"
-            },
-            {
-                name: "5",
-                url: "https://github.com/kirill-kovalev/tracks-raw/raw/main/5.05.22.json"
-            }
-        ])
-        resolve(data)
-    });
-}
-
 export const App = () => {
-    var [tracks, setTracks] = useState([])//useStorage("tracks", [])
+    let [tracks, setTracks] = useState([]) //useStorage("tracks", [])
 
     const [excludedTrackIds, setExcludedTrackIds] = useState([]) //useStorage("excluded",[]);
 
+
     useEffect(() => {
-        _fetch("/tracks")
-            .then(j => JSON.parse(j))
+        const server = "http://localhost:5000"
+        fetch(server)
+            .then(j => j.json())
             .then(l => {
-                return l.map( t => {
-                    console.log("fetching tracks from: "+t.url)
-                    fetch(t.url)
+                return l.map(id => {
+                    const url = server+"/"+id
+                    fetch(url)
                         .then( r=>{
-                            console.log("fetched track " + t.url)
+                            console.log("fetched track " + id)
                             return r
                         })
                         .then(r => r.json())
                         .then(d => d.features)
                         .then(features => {
-                            return features.map(f => new Track(f) )
+                            return features.map(f => new Track(f, id) )
                         })
                         .then(fl => {
-                            console.log("added track " + fl[0].name)
-                            console.log("total tracks " + tracks.length)
-                            tracks = tracks.concat(fl)
-                            setTracks(tracks)
+                            setTracks(prev => [...prev, fl])
                         })
                 })
             })
