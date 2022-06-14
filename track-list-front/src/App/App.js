@@ -1,42 +1,46 @@
 import {AppRoot, PanelHeader} from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 import {ALL_TRACKS, Track} from "../Model/Track";
-import {useStorage} from "../Model/useStorage";
 
 import {SideList} from "../SideList/SideList";
 import {TrackMap} from "../Map/TrackMap";
 import {useEffect, useState} from "react";
 
+const API_ENDPOINT = "http://localhost:5000"
+
 export const App = () => {
-    let [tracks, setTracks] = useState([]) //useStorage("tracks", [])
+    const [tracks, setTracks] = useState([]) //useStorage("tracks", [])
+    const [isMounted, setIsMounted] = useState(false)
+
 
     const [excludedTrackIds, setExcludedTrackIds] = useState([]) //useStorage("excluded",[]);
 
+    useEffect(async () => {
+        setIsMounted(true)
 
-    useEffect(() => {
-        const server = "http://localhost:5000"
-        fetch(server)
-            .then(j => j.json())
-            .then(l => {
-                return l.map(id => {
-                    const url = server+"/"+id
-                    fetch(url)
-                        .then( r=>{
-                            console.log("fetched track " + id)
-                            return r
-                        })
-                        .then(r => r.json())
-                        .then(d => d.features)
-                        .then(features => {
-                            return features.map(f => new Track(f, id) )
-                        })
-                        .then(fl => {
-                            setTracks(prev => [...prev, fl])
-                        })
+        const trackIds = await fetch(API_ENDPOINT).then(j => j.json())
+
+        trackIds.forEach(id => {
+            const url = `${API_ENDPOINT}/${id}`
+
+            fetch(url)
+                .then( trackData =>{
+                    console.log("fetched track " + id)
+                    return trackData.json()
                 })
-            })
+                .then(({features}) => {
+                    const newFeatures = features.map(f => new Track(f, id) )
 
-    }, []);
+                    if (isMounted) {
+                        setTracks(prev => ([...prev, ...newFeatures]))
+                    }
+                })
+        })
+
+        return () => {
+            setIsMounted(false)
+        }
+    }, [isMounted]);
 
     return (
         <AppRoot>
