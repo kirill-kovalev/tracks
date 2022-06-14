@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="29c9df99-323e-4a97-8f21-1f2af0bd4cd4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" afterDir="false" />
+    <list default="true" id="29c9df99-323e-4a97-8f21-1f2af0bd4cd4" name="Changes" comment="fixes for docker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/bot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../track-list-front/src/SideList/SideList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../track-list-front/src/SideList/SideList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../track-list-front/src/SideList/TrackCell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../track-list-front/src/SideList/TrackCell.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +57,16 @@
       <option name="presentableId" value="Default" />
       <updated>1655138051521</updated>
       <workItem from="1655138053222" duration="4018000" />
-      <workItem from="1655224961647" duration="11793000" />
+      <workItem from="1655224961647" duration="12553000" />
     </task>
+    <task id="LOCAL-00001" summary="fixes for docker">
+      <created>1655246531653</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655246531654</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,5 +86,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="fixes for docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes for docker" />
   </component>
 </project>

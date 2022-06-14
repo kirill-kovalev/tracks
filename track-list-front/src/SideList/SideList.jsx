@@ -9,6 +9,21 @@ import {useStorage} from "../Model/useStorage";
 export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
 
     let [filter, setFilter] = useStorage("excluded","time");
+    let [isAsc, setIsAsc] = useStorage("isAsc",false);
+
+
+    const sorted = tracks.sort( (lhs, rhs) => {
+        switch (filter) {
+            case "time":
+                return lhs.time > rhs.time ? 1 : -1
+            case "name":
+                return lhs.name > rhs.name ? 1 : -1
+            case "distance":
+                return lhs.length > rhs.length ? 1 : -1
+        }
+    })
+
+    const finalArray = isAsc ? sorted : sorted.reverse()
 
     return (
         <SplitCol spaced width={400} >
@@ -32,23 +47,16 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
 
                     onChange = { (val) => {
                         console.log(val)
-                        setFilter(val)
+                        if ( val === filter ) {
+                            setIsAsc(a => !a)
+                        } else {
+                            setFilter(val)
+                        }
                     }}
                 />
                 <Panel>
                     {
-                        tracks
-                            .sort( (lhs, rhs) => {
-                                switch (filter) {
-                                    case "time":
-                                        return lhs.time > rhs.time ? 1 : -1
-                                    case "name":
-                                        return lhs.name > rhs.name ? 1 : -1
-                                    case "distance":
-                                        return lhs.length > rhs.length ? 1 : -1
-                                }
-                            })
-                            .map((i) => {
+                        finalArray.map((i) => {
                             return (
                                 <TrackCell
                                     key={i.id}
@@ -59,7 +67,7 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
                                             setExcludedTrackIds(old => [...old, i.id])
                                         }
                                     }}
-                                    isExcluded={!excludedTrackIds.includes(i.id)}
+                                    isExcluded={excludedTrackIds.includes(i.id)}
                                     track={i}
                                     accentColor={ trackColor(tracks, i) }
                                 />

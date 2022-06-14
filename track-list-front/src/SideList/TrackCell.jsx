@@ -6,6 +6,14 @@ export const TrackCell = ({track, onClick, isExcluded, accentColor}) => {
         <Cell onClick={onClick} style={{
             width: "100%"
         }}>
+            <span
+                style={{
+                    fontSize: 8,
+                    paddingLeft: 36,
+                    color: 'lightGrey',
+                    fontWeight: 600
+                }}
+            >{ track.id }</span>
             <div className="trackCell-container" style={{
                 width: "100%"
             }}>
@@ -17,6 +25,7 @@ export const TrackCell = ({track, onClick, isExcluded, accentColor}) => {
                 </div>
 
                 <div className={"trackCell-Text-vStack"}>
+
                     <div className="trackCell-Text-hStack">
                         <span>{ track.name }</span>
                         <span>{ (track.length / 1000).toFixed(2) } km</span>
