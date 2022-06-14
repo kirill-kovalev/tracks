@@ -32,8 +32,7 @@ const bind = (bot, token) => {
         const chatId = msg.chat.id;
         if (!msg.from.username.toLowerCase().includes(process.env["OWNER"].toLowerCase())) { return }
 
-
-        fs.rm(`./tracks/${match[1]}`)
+        fs.rmSync(`${process.cwd()}/tracks/${match[1]}`)
 
         // send back the matched "whatever" to the chat
         bot.sendMessage(chatId, "removed file with id "+match[1] );
@@ -44,12 +43,16 @@ const bind = (bot, token) => {
 const downloadTgFile = (url) => {
 
     const savedFileName = `${ uuidv4() }`
-    const savedFileDir = "./tracks"
+    const savedFileDir = `${process.cwd()}/tracks`
     const savedFilePath = `${ savedFileDir }/${savedFileName}`
+
+    // if(!fs.existsSync(savedFileDir)) {
+    //     fs.mkdirSync(savedFileDir)
+    // }
 
     if (url.includes("gpx")) {
         const tmpFileName = `${ uuidv4() }.gpx`
-        const tmpFileDir = "./tmp"
+        const tmpFileDir = `${process.cwd()}/tmp`
         const tmpFilePath = `${ tmpFileDir }/${tmpFileName}`
 
         const parser = new DOMParser()

@@ -10,7 +10,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.tracks.tls.certresolver=default"
       - "traefik.http.services.tracks.loadbalancer.server.port=80"
-      
+
     networks:
       - nginx_common
   api:
@@ -28,7 +28,7 @@ services:
       - "tracks-uploads:/app/tracks:rw"
     
     networks:
-          - nginx_common
+      - nginx_common
 networks:
   nginx_common:
     external: true

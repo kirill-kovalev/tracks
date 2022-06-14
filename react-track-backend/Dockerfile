@@ -4,5 +4,7 @@ COPY . /app/
 
 RUN npm install
 EXPOSE 5000
-USER node
+
+VOLUME /app/tracks
+
 CMD ["node", "./bin/www"]
