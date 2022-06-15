@@ -26,7 +26,7 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
     const finalArray = isAsc ? sorted : sorted.reverse()
 
     return (
-        <SplitCol spaced width={400} >
+        <SplitCol spaced maxWidth={400} width={"25%"} minWidth={150} >
 
             <Group>
                 <SegmentedControl

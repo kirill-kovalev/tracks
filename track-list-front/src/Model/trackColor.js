@@ -1,7 +1,10 @@
 import {Track} from "./Track";
 
 export function trackColor(tracks, track) {
-    let index = tracks.indexOf(track) ?? 0
+    let index = tracks
+        .sort( (lhs, rhs) => { return lhs.time < rhs.time ? 1 : -1 })
+        .indexOf(track) ?? 0
+
     const colors = [
         "#0F2E3F",
         "#EC3C1A",

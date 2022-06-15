@@ -14,29 +14,36 @@ export const App = () => {
     const [isMounted, setIsMounted] = useState(false)
 
 
-    const [excludedTrackIds, setExcludedTrackIds] = useStorage("excluded",[]);
+    const [excludedTrackIds, setExcludedTrackIds] = useState([]);
 
     useEffect(async () => {
         setIsMounted(true)
 
         const trackIds = await fetch(API_ENDPOINT).then(j => j.json())
 
-        trackIds.forEach(id => {
-            const url = `${API_ENDPOINT}/${id}`
+        if (isMounted) {
+            trackIds.forEach(id => {
+                const url = `${API_ENDPOINT}/${id}`
 
-            fetch(url)
-                .then( trackData =>{
-                    console.log("fetched track " + id)
-                    return trackData.json()
-                })
-                .then(({features}) => {
-                    const newFeatures = features.map(f => new Track(f, id) )
+                fetch(url)
+                    .then(trackData => {
+                        console.log("fetched track " + id)
+                        return trackData.json()
+                    })
+                    .then(({features}) => {
+                        const newTracks = features.map(f => new Track(f, id))
 
-                    if (isMounted) {
-                        setTracks(prev => ([...prev, ...newFeatures]))
-                    }
-                })
-        })
+                        setTracks(prev => {
+                            const tracksToAdd = newTracks.filter(t => {
+                                return !prev.includes(i => i.id === t.id)
+                            })
+
+                            return [...prev, ...tracksToAdd]
+                        })
+
+                    })
+            })
+        }
 
         return () => {
             setIsMounted(false)
