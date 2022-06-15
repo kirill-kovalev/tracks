@@ -1,8 +1,16 @@
 import {Track} from "./Track";
 
 export function trackColor(tracks, track) {
-    let index = tracks
-        .sort( (lhs, rhs) => { return lhs.time < rhs.time ? 1 : -1 })
+    let index = [...tracks]
+        .sort( (lhs, rhs) => {
+            if (lhs.name < rhs.name)
+                return -1
+            if (lhs.name > rhs.name)
+                return 1
+            return 0
+        })
+        .sort( (lhs, rhs) => lhs.length - rhs.length)
+        .sort( (lhs, rhs) => lhs.time.getMilliseconds() - rhs.time.getMilliseconds())
         .indexOf(track) ?? 0
 
     const colors = [
@@ -16,11 +24,11 @@ export function trackColor(tracks, track) {
         "#CE0755",
         "#B97A19",
         "#8E5AF7",
-        "#77C344",
+        "#89ff00",
         "#BE2813",
         "#42C1F7",
-        "#579F2B",
-        "#B8E297",
+        "#2a6706",
+        "#00ff9d",
         "#2D7FC1",
         "#F5B433"
     ]

@@ -14,8 +14,8 @@ export const TrackMap = ({tracks, excludedTrackIds}) => {
                     right: 0
                 }}
                 defaultState={{
-                    center: [60, 30],
-                    zoom: 9,
+                    center: [59.945455, 30.331429],
+                    zoom: 12,
                 }}
             >
                 {

@@ -8,22 +8,26 @@ import {useStorage} from "../Model/useStorage";
 
 export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
 
-    let [filter, setFilter] = useStorage("excluded","time");
-    let [isAsc, setIsAsc] = useStorage("isAsc",false);
+    let [filter, setFilter] = useState("time");
+    // let [isAsc, setIsAsc] = useState(false);
 
 
-    const sorted = tracks.sort( (lhs, rhs) => {
+    const sorted = [...tracks].sort( (lhs, rhs) => {
         switch (filter) {
             case "time":
-                return lhs.time > rhs.time ? 1 : -1
+                return lhs.time.getMilliseconds() - rhs.time.getMilliseconds()
             case "name":
-                return lhs.name > rhs.name ? 1 : -1
+                if (lhs.name < rhs.name)
+                    return -1
+                if (lhs.name > rhs.name)
+                    return 1
+                return 0
             case "distance":
-                return lhs.length > rhs.length ? 1 : -1
+                return lhs.length - rhs.length
         }
     })
 
-    const finalArray = isAsc ? sorted : sorted.reverse()
+    console.log(sorted.map(i => i.id))
 
     return (
         <SplitCol spaced maxWidth={400} width={"25%"} minWidth={150} >
@@ -45,18 +49,11 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
                         },
                     ]}
 
-                    onChange = { (val) => {
-                        console.log(val)
-                        if ( val === filter ) {
-                            setIsAsc(a => !a)
-                        } else {
-                            setFilter(val)
-                        }
-                    }}
+                    onChange={ val => setFilter(val) }
                 />
                 <Panel>
                     {
-                        finalArray.map((i) => {
+                        sorted.map((i) => {
                             return (
                                 <TrackCell
                                     key={i.id}

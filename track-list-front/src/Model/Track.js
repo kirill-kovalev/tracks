@@ -4,7 +4,8 @@ import geojsonLength from "geojson-length";
 
 export class Track {
     constructor(geojsonFeature, id) {
-        this.id = id
+        this.id = uuidv4()
+        this.file = id
         this.name = geojsonFeature.properties.name
 
         this.time = new Date(geojsonFeature.properties.time)

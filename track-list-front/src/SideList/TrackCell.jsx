@@ -13,7 +13,7 @@ export const TrackCell = ({track, onClick, isExcluded, accentColor}) => {
                     color: 'lightGrey',
                     fontWeight: 600
                 }}
-            >{ track.id }</span>
+            >{ track.file }</span>
             <div className="trackCell-container" style={{
                 width: "100%"
             }}>
@@ -28,7 +28,11 @@ export const TrackCell = ({track, onClick, isExcluded, accentColor}) => {
 
                     <div className="trackCell-Text-hStack">
                         <span>{ track.name }</span>
-                        <span>{ (track.length / 1000).toFixed(2) } km</span>
+                        <span
+                            style={{
+                                paddingLeft: "10px"
+                            }}
+                        >{ (track.length / 1000).toFixed(2) } km</span>
                     </div>
                     <span>{
                         track.time.toLocaleDateString("ru-ru", {
