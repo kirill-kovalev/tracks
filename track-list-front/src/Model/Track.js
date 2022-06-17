@@ -8,7 +8,7 @@ export class Track {
         this.file = id
         this.name = geojsonFeature.properties.name
 
-        this.time = new Date(geojsonFeature.properties.time)
+        this.time = new Date(geojsonFeature.properties.time ?? 0).getTime()
 
         this.length = geojsonLength(geojsonFeature.geometry)
         this.geometry = geojsonFeature.geometry.coordinates.map( c => {

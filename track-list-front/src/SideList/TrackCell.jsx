@@ -1,49 +1,33 @@
 import {Icon24CheckCircleOff, Icon24CheckCircleOn} from "@vkontakte/icons";
-import {Cell} from "@vkontakte/vkui";
+import {Caption, Cell, RichCell} from "@vkontakte/vkui";
 
 export const TrackCell = ({track, onClick, isExcluded, accentColor}) => {
+    let date = new Date(track.time)
     return (
-        <Cell onClick={onClick} style={{
-            width: "100%"
-        }}>
-            <span
-                style={{
-                    fontSize: 8,
-                    paddingLeft: 36,
-                    color: 'lightGrey',
-                    fontWeight: 600
-                }}
-            >{ track.file }</span>
-            <div className="trackCell-container" style={{
-                width: "100%"
-            }}>
-                <div className={"trackCell-Icon"}>
-                    { isExcluded ?
-                        <Icon24CheckCircleOff fill={accentColor}/> :
-                        <Icon24CheckCircleOn fill={accentColor}/>
+        <RichCell
+            multiline
+            onClick={onClick}
+            before={
+                <div style={{ paddingTop: 23, paddingRight: 18}}>
+                    {
+                        isExcluded ?
+                            <Icon24CheckCircleOff fill={accentColor}/> :
+                            <Icon24CheckCircleOn fill={accentColor}/>
                     }
                 </div>
-
-                <div className={"trackCell-Text-vStack"}>
-
-                    <div className="trackCell-Text-hStack">
-                        <span>{ track.name }</span>
-                        <span
-                            style={{
-                                paddingLeft: "10px"
-                            }}
-                        >{ (track.length / 1000).toFixed(2) } km</span>
-                    </div>
-                    <span>{
-                        track.time.toLocaleDateString("ru-ru", {
-                            weekday: 'long',
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        })
-                    }</span>
-                </div>
-            </div>
-        </Cell>
+            }
+            caption={ date.toLocaleDateString("ru-ru", {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }) }
+            after={ `${(track.length / 1000).toFixed(2)} km` }
+        >
+            <Caption level="4" weight="1" style={{ color: 'lightGrey', marginBottom: 4 }}>
+                { track.file }
+            </Caption>
+            {track.name}
+        </RichCell>
     )
 }

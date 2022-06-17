@@ -10,7 +10,7 @@ export function trackColor(tracks, track) {
             return 0
         })
         .sort( (lhs, rhs) => lhs.length - rhs.length)
-        .sort( (lhs, rhs) => lhs.time.getMilliseconds() - rhs.time.getMilliseconds())
+        .sort( (lhs, rhs) => lhs.time - rhs.time)
         .indexOf(track) ?? 0
 
     const colors = [

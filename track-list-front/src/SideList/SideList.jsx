@@ -1,4 +1,13 @@
-import {Cell, FixedLayout, Group, Panel, SegmentedControl, SplitCol} from "@vkontakte/vkui";
+import {
+    ButtonGroup,
+    Cell,
+    FixedLayout,
+    Group, List,
+    Panel,
+    SegmentedControl,
+    SplitCol,
+    SubnavigationButton
+} from "@vkontakte/vkui";
 import {trackColor} from "../Model/trackColor";
 import {Icon24CheckCircleOff, Icon24CheckCircleOn} from "@vkontakte/icons";
 import {TrackCell} from "./TrackCell";
@@ -6,7 +15,7 @@ import './TrackCell.css';
 import {useState} from "react";
 import {useStorage} from "../Model/useStorage";
 
-export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
+export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds, ...props}) => {
 
     let [filter, setFilter] = useState("time");
     // let [isAsc, setIsAsc] = useState(false);
@@ -15,7 +24,7 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
     const sorted = [...tracks].sort( (lhs, rhs) => {
         switch (filter) {
             case "time":
-                return lhs.time.getMilliseconds() - rhs.time.getMilliseconds()
+                return rhs.time - lhs.time
             case "name":
                 if (lhs.name < rhs.name)
                     return -1
@@ -27,12 +36,8 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
         }
     })
 
-    console.log(sorted.map(i => i.id))
-
     return (
-        <SplitCol spaced maxWidth={400} width={"25%"} minWidth={150} >
-
-            <Group>
+            <div style={props.style}>
                 <SegmentedControl
                     options={[
                         {
@@ -51,7 +56,28 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
 
                     onChange={ val => setFilter(val) }
                 />
-                <Panel>
+
+                <ButtonGroup mode="horizontal" gap="space" style={{
+                    padding: "15px 0",
+                    alignItems: "center"
+                }}>
+                    <SubnavigationButton
+                        before={<Icon24CheckCircleOff/>}
+                        size={"l"}
+                        onClick={() => setExcludedTrackIds(tracks.map( t=> t.id))}
+                    >
+                        Скрыть все
+                    </SubnavigationButton>
+                    <SubnavigationButton
+                        before={<Icon24CheckCircleOn/>}
+                        size={"l"}
+                        onClick={() => setExcludedTrackIds([]) }
+                    >
+                        Показать все
+                    </SubnavigationButton>
+                </ButtonGroup>
+
+                <List>
                     {
                         sorted.map((i) => {
                             return (
@@ -71,8 +97,7 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds}) => {
                             )
                         })
                     }
-                </Panel>
-            </Group>
-        </SplitCol>
+                </List>
+            </div>
     )
 }

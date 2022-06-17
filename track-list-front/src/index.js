@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {App} from './App/App';
 
-import {ConfigProvider, AdaptivityProvider} from "@vkontakte/vkui";
+import {ConfigProvider, AdaptivityProvider, WebviewType, AppRoot} from "@vkontakte/vkui";
 
 const rootNode = document.getElementById('root');
 ReactDOM.render(
-    <ConfigProvider>
+    <ConfigProvider
+        webviewType={WebviewType.INTERNAL}
+    >
         <AdaptivityProvider>
-            <App />
+            <AppRoot>
+                <App />
+            </AppRoot>
         </AdaptivityProvider>
     </ConfigProvider>
 , rootNode);
