@@ -19,6 +19,7 @@ import {Icon28Menu} from "@vkontakte/icons";
 
 const API_ENDPOINT = "https://api.tracks.kidev.ru"
 
+
 export const App = () => {
     const [tracks, setTracks] = useState([]) //useStorage("tracks", [])
     const [isMounted, setIsMounted] = useState(false)
@@ -38,8 +39,13 @@ export const App = () => {
             let fetchRequests = trackIds.map(id => {
                 const url = `${API_ENDPOINT}/${id}`
 
+                console.log("fetching " + id)
                 return fetch(url)
                     .then(d => d.json())
+                    .then(u => {
+                        console.log("fetched " + id)
+                        return u
+                    })
                     .then(({features}) => {
                         const newTracks = features.map(f => new Track(f, id))
 
@@ -55,7 +61,7 @@ export const App = () => {
             })
 
             Promise.all(fetchRequests)
-                .finally( _ => {
+                .finally(_ => {
                     setIsLoading(false)
                 })
         }
@@ -112,11 +118,13 @@ export const App = () => {
                <SplitCol spaced maxWidth={400} width={"25%"} minWidth={290} >
 
                    <Group>
-                       <SideList
-                           tracks={tracks}
-                           excludedTrackIds={excludedTrackIds}
-                           setExcludedTrackIds={setExcludedTrackIds}
-                       />
+                       <Panel>
+                           <SideList
+                               tracks={tracks}
+                               excludedTrackIds={excludedTrackIds}
+                               setExcludedTrackIds={setExcludedTrackIds}
+                           />
+                       </Panel>
                    </Group>
                </SplitCol>
                }
