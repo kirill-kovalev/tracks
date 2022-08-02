@@ -1,6 +1,6 @@
 import { v4 as uuidv4} from "uuid";
 import geojsonLength from "geojson-length";
-
+import {simplifyPolyline} from "./simplifyPolyline";
 
 export class Track {
     constructor(geojsonFeature, id) {
@@ -11,9 +11,14 @@ export class Track {
         this.time = new Date(geojsonFeature.properties.time ?? 0).getTime()
 
         this.length = geojsonLength(geojsonFeature.geometry)
-        this.geometry = geojsonFeature.geometry.coordinates.map( c => {
+
+
+
+        let coordinates = geojsonFeature.geometry.coordinates.map( c => {
           return [c[1], c[0]]
         })
+
+        this.geometry = simplifyPolyline(coordinates, 0.0007)
     }
 
 }
