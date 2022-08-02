@@ -76,8 +76,6 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds, ...prop
                         Показать все
                     </SubnavigationButton>
                 </ButtonGroup>
-
-                <List>
                     {
                         sorted.map((i) => {
                             return (
@@ -97,7 +95,6 @@ export const SideList = ({tracks, excludedTrackIds, setExcludedTrackIds, ...prop
                             )
                         })
                     }
-                </List>
             </div>
     )
 }
